@@ -13,7 +13,8 @@ Forked from https://github.com/Nyandwi/ModernConvNets
 
 遵循上述结构的ConvNets架构的例子是AlexNet和VGG。但大多数现代的卷积网络架构已经超越了单纯的卷积堆栈、最大池化和全连接层。例如，像ResNet这样的架构和其他类似的网络都涉及到残差连接。
 
-**问题:** 如何选择合适的网络结构？
+**问题:** 
+如何选择合适的网络结构？
 
 第一条经验法则是，您不应该试图从头开始设计自己的架构。如果你正在处理一般问题，从ResNet-50开始不会有什么坏处。如果您正在构建一个计算资源有限的基于移动的可视化应用，请尝试MobileNets(或其他移动友好的架构，如ShuffleNetv2或ESPNetv2)。
 
