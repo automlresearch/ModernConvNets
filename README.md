@@ -1,23 +1,22 @@
 # Modern Convolutional Neural Network Architectures
+Forked from https://github.com/Nyandwi/ModernConvNets
 
-<p style='text-align: justify;'> <a href="https://nbviewer.jupyter.org/github/Nyandwi/ModernConvNets"><img src="https://raw.githubusercontent.com/jupyter/design/master/logos/Badges/nbviewer_badge.svg" alt="Render nbviewer" /> </a> <a href="https://colab.research.google.com/github/Nyandwi/ModernConvNets" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a> </p>
+**重要性**：卷积神经网络(卷积神经网络或cnn)是一类神经网络算法，主要用于图像分类、目标检测和图像分割等视觉识别任务。在视觉识别中使用卷积神经网络无疑是深度学习领域2010年代最重大的发明之一。
 
->***Revision of the designs and implementation of Modern Convolutional Neural Network architectures***
--------
+**背景信息**：一个标准的ConvNet架构通常由3个主要层组成，分别是卷积层、最大池化层和全连接层。卷积层是卷积网络的主要组成部分。它们用于使用过滤器提取图像中的特征。
 
-![cnns_image](images/gitcover.png)
+池化层用于对卷积层生成的激活或特征图进行下采样。下采样也可以通过在正常的卷积层中使用跨距(大于1)来实现，但最大池化层没有任何可学参数，而且它们引入了平移不变性，从而提高了空间诱导偏差代价下的模型泛化。全连接层用于分类目的(将学习到的特征与其各自的标签匹配)。在分类设置中，最后一个全连接层通常使用softmax激活功能激活!
 
-## Introduction to Convolutional Neural Networks
+遵循上述结构的ConvNets架构的例子是AlexNet和VGG。但大多数现代的卷积网络架构已经超越了单纯的卷积堆栈、最大池化和全连接层。例如，像ResNet这样的架构和其他类似的网络都涉及到残差连接。
 
-Convolutional Neural Networks (ConvNets or CNNs) are a class of neural networks algorithms that are mostly used in visual recognition tasks such as [image classification](https://twitter.com/Jeande_d/status/1462040682437120001), object detection, and image segmentation. The use of ConvNets in visual recognition is inarguably one of the [biggest inventions of decade 2010s in deep learning community](https://twitter.com/Jeande_d/status/1501188511281549321?s=20&t=dCZzcKKoXgvVL_8ebVDclg).
+**问题** 如何选择合适的网络结构？
+第一条经验法则是，您不应该试图从头开始设计自己的架构。如果你正在处理一般问题，从ResNet-50开始不会有什么坏处。如果您正在构建一个计算资源有限的基于移动的可视化应用，请尝试MobileNets(或其他移动友好的架构，如ShuffleNetv2或ESPNetv2)。
 
-A standard ConvNet architecture is typically made of 3 main layers that are convolution, max-pooling, and fully connected layers. Convolution layers are the main component of ConvNets. They are used for extracting features in images using filters. 
+为了更好地平衡准确性和计算效率，请尝试EfficientNet或最新的ConvNeXt!
 
-Pooling layers are used for downsampling the activation or feature maps produced by convolutional layers. Downsampling can also be achieved by using strides(greater than 1) in a normal convolution layer, but max-pooling layers don't have any learnable parameters and they introduce translational invariance which improves model generalization on the cost of [spatial inductive bias](https://samiraabnar.github.io/articles/2020-05/indist). Fully connected layers are used for classification purpose(matching learned features with their respective labels). In classification settings, the last fully connected layer is typically activated with `softmax` activation function!
+也就是说，选择架构(或学习算法)并不是免费的午餐。没有通用的架构。没有一个单一的体系结构可以保证对所有的数据集和问题都有效。都是实验。这是所有努力!
 
-Example of ConvNets architectures that follow the above structure are [AlexNet](convnets/01-alexnet.ipynb) and [VGG](convnets/02-vgg.ipynb). Most modern ConvNet architectures go beyond plain stack of convolution, max-pooling and fully connected layers. For example, architectures like [ResNet](convnets/04-resnet.ipynb) and other alike networks involve residual connections.
-
-As you go through the materials in this repository, you will learn more about those architectures and how they are implemented. For more about ConvNets, check [resources section](#further-learning)!
+如果你是一个梦想家，或者喜欢呆在这个领域的前沿，看看视觉Transformers吧! 我们还不知道，但它们可能是ConvNets的继承者!
 
 ## ConvNet Architectures
 
@@ -47,18 +46,9 @@ As you go through the materials in this repository, you will learn more about th
 
 * ConvNeXt - A ConvNet for the 2020s: [implementation](convnets/13-convnext.ipynb), [annotated paper](annotated_papers/convnexts.pdf), [paper](https://arxiv.org/abs/2201.03545)
 
-## Choosing a ConvNet Architecture
-
-Computer vision community is blessed with having many vision architectures that work great across many platforms or hardwares. But, having many options means it is not easy to choose an architecture that suits a given problem. How can you choose a ConvNet architecture for your problem?
-
-The first rule of thumb is that you should not try to design your own architecture from scratch. If you are working on generic problem, it never hurts to start with ResNet-50. If you are building a mobile-based visual application where there is limited computation resources, try [MobileNets](https://arxiv.org/abs/1801.04381)(or other mobile friendly architectures like [ShuffleNetv2](https://arxiv.org/abs/1807.11164) or [ESPNetv2](https://arxiv.org/abs/1811.11431)). 
-
-For a better trade-off between accuracy and computation efficiency, try [EfficientNet](convnets/10-efficientnet.ipynb) or latest [ConvNeXt](convnets/13-convnext.ipynb)!
-
-That said, choosing architecture(or learning algorithm) is a no free-lunch scenario. There is no universal architecture. There is no single architecture that is guaranteed to work for all datasets and problems. It's all experimentation. It's all trying!
-
-If you are a visionary or like to stay on the bleeding edge of the field, take a look at [vision transformers](https://paperswithcode.com/method/vision-transformer)! We don't know yet, but they might be the successor of ConvNets!
-
+## An Empirical Study of CNN, Transformer, and MLP
+CNN与Transformer、MLP性能对比
+[paper](https://arxiv.org/pdf/2108.13002.pdf)  [code](https://github.com/microsoft/SPACH)
 
 ## Important Notes
 
@@ -68,6 +58,7 @@ Computer vision research community is [very vibrant](https://twitter.com/Jeande_
 With the intelligent frameworks and better architectures we have to day, understanding how networks architectures are designed before you can throw them in your dataset is never a neccesity, but it's one of the best ways to stay on top of this vibrant and fast-ever changing field!
 
 If you want to use ConvNets for solving a visual recognition tasks such as image classification or object detection, you can get up running quickly by getting the models (and their pretrained weights) from tools like [Keras](https://keras.io), [TensorFlow Hub](https://tfhub.dev), [PyTorch Vision](https://github.com/pytorch/vision), [Timm PyTorch Image Models](https://github.com/rwightman/pytorch-image-models), [GluonCV](https://cv.gluon.ai), and [OpenMML Lab](https://github.com/open-mmlab).
+
 
 ## References Implementations
 
@@ -91,24 +82,3 @@ If you would like to learn more about ConvNets/CNNs, below are some few amazing 
 * [CS230 Deep Learning - CNN Cheatsheet](https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-convolutional-neural-networks)
 
 * [CNNs Interactive Explainer](https://poloclub.github.io/cnn-explainer/)
-
-## Citation
-
-If you use any material in this repository, you are welcome to cite it with:
-
-```
-author: Jean de Dieu Nyandwi
-title: Modern Convolutional Neural Network Architectures
-year: 2022
-publisher: GitHub
-url: https://github.com/Nyandwi/ModernConvNets
-```
-***************************
-
-I had a joy learning, revising, and implementing CNN architectures. While going through the materials in this repository, I hope you will enjoy them as much as I did!
-
-For any error, suggestion, or simply anything, you can reach out through [email](mailto:johnjw7084@gmail.com), [Twitter](https://twitter.com/Jeande_d) or [LinkedIn](https://www.linkedin.com/in/nyandwi/).
-
-******
-
-![Twitter Follow](https://img.shields.io/twitter/follow/jeande_d?style=social)
