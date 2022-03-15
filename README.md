@@ -1,5 +1,5 @@
 # Modern Convolutional Neural Network Architectures
-** This project is forked from https://github.com/Nyandwi/ModernConvNets**
+**This project is forked from https://github.com/Nyandwi/ModernConvNets**
 
 **重要性**：
 
